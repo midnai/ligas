@@ -58,8 +58,8 @@ En la carga inicial encontraras los links para crear un usuario y para el login
 ![Paso1](https://github.com/octobel/ligas/blob/main/public/img/Paso%201.png?raw=true)
 ![Paso2](https://github.com/octobel/ligas/blob/main/public/img/Paso%202.png?raw=true)
 
-## Dashboard & Lista de Equipo
-AL ingresar al sistema podras visualizar las opciones tanto para ir a la vista de listado de equipos como opciones de la cuenta, entre ellas crear API tokens.
+## Dashboard & Lista de Equipos
+Al ingresar al sistema podras visualizar las opciones para ir al listado de equipos como opciones del usuario, entre ellas crear API tokens.
 
 ![Paso3](https://github.com/octobel/ligas/blob/main/public/img/Paso%203.png?raw=true)
 
@@ -88,5 +88,8 @@ Decidi usar el paquete `Laravel Excel` que nos permite dividir los registros del
 La logica es muy sencilla una ves teniendo el paquete, se puede encontrar en `app/Http/Controllers/Api/LigaEquipoController.php`
 
 Archivo de ejemplo: `public/excel/test.xlsx`
+
+![carga masiva](https://github.com/octobel/ligas/blob/main/public/img/carga_masiva.png?raw=true)
+
 
 [Laravel Jetstream]: <https://jetstream.laravel.com/>
