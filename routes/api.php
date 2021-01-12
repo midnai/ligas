@@ -20,28 +20,28 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum', 'throttle:tokens'])->group(function() {
 
-    Route::get('ligas', 'LigaController@index');
-    Route::get('ligas/{liga}', 'LigaController@show');
-    Route::post('ligas', 'LigaController@store');
-    Route::put('ligas/{liga}', 'LigaController@update');
-    Route::delete('ligas/{liga}', 'LigaController@delete');
-    Route::get('ligas/{liga}/equipos', 'LigaEquipoController@index');
-    // Route::post('ligas/{liga}/equipos', 'LigaEquipoController@equipos');
-    Route::post('ligas/equipos', 'LigaEquipoController@equipos');
+    Route::get('ligas', 'Api\LigaController@index');
+    Route::get('ligas/{liga}', 'Api\LigaController@show');
+    Route::post('ligas', 'Api\LigaController@store');
+    Route::put('ligas/{liga}', 'Api\LigaController@update');
+    Route::delete('ligas/{liga}', 'Api\LigaController@delete');
+    Route::get('ligas/{liga}/equipos', 'Api\LigaEquipoController@index');
+    // Route::post('ligas/{liga}/equipos', 'Api\LigaEquipoController@equipos');
+    Route::post('ligas/equipos', 'Api\LigaEquipoController@equipos');
 
-    Route::get('equipos', 'EquipoController@index');
-    Route::get('equipos/{equipo}', 'EquipoController@show');
-    Route::get('equipos/{equipo}/ligas', 'EquipoLigaController@index');
-    Route::get('equipos/{equipo}/jugadores', 'EquipoJugadorController@index');
-    Route::post('equipos', 'EquipoController@store');
-    Route::put('equipos/{equipo}', 'EquipoController@update');
-    Route::delete('equipos/{equipo}', 'EquipoController@delete');
+    Route::get('equipos', 'Api\EquipoController@index');
+    Route::get('equipos/{equipo}', 'Api\EquipoController@show');
+    Route::get('equipos/{equipo}/ligas', 'Api\EquipoLigaController@index');
+    Route::get('equipos/{equipo}/jugadores', 'Api\EquipoJugadorController@index');
+    Route::post('equipos', 'Api\EquipoController@store');
+    Route::put('equipos/{equipo}', 'Api\EquipoController@update');
+    Route::delete('equipos/{equipo}', 'Api\EquipoController@delete');
 
-    Route::get('jugadores', 'JugadorController@index');
-    Route::get('jugadores/{jugador}', 'JugadorController@show');
-    Route::post('jugadores', 'JugadorController@store');
-    Route::put('jugadores/{jugador}', 'JugadorController@update');
-    Route::delete('jugadores/{jugador}', 'JugadorController@delete');
+    Route::get('jugadores', 'Api\JugadorController@index');
+    Route::get('jugadores/{jugador}', 'Api\JugadorController@show');
+    Route::post('jugadores', 'Api\JugadorController@store');
+    Route::put('jugadores/{jugador}', 'Api\JugadorController@update');
+    Route::delete('jugadores/{jugador}', 'Api\JugadorController@delete');
 
 });
 
