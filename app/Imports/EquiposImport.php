@@ -22,6 +22,10 @@ class EquiposImport implements OnEachRow, WithHeadingRow, WithChunkReading
 
         $equipo = new Equipo([
             'nombre' => $row['equipo_nombre'],
+            'pais' => $row['pais'],
+            'ciudad' => $row['ciudad'],
+            'estadio' => $row['estadio'],
+            'logo' => 'https://ui-avatars.com/api/?name='.urlencode($row['equipo_nombre']).'&color=7F9CF5&background=EBF4FF'
         ]);
         $equipo->save();
 
