@@ -21,6 +21,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/equipos', function () {
-    return view('equipos');
-})->name('equipos');
+Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+
+    Route::get('equipos', function () {
+        return view('equipos');
+    })->name('equipos');
+
+    Route::get('ligas', function () {
+        return view('ligas');
+    })->name('ligas');
+
+});

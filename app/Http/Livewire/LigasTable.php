@@ -4,16 +4,16 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Equipo;
+use App\Models\Liga;
 
-class EquiposTable extends Component
+class LigasTable extends Component
 {
     use WithPagination;
 
     public function render()
     {
-        return view('livewire.equipos-table', [
-            'equipos' => Equipo::paginate(10)
+        return view('livewire.ligas-table', [
+            'ligas' => Liga::paginate(10)
         ]);
     }
 }

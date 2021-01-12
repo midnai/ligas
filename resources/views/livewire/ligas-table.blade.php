@@ -7,58 +7,52 @@
               <thead class="bg-gray-50">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Equipo
+                    Liga
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Pais
+                    # Fechas
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Ciudad
+                    # Equipos
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Estadio
+                    Fecha Inicio
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Fecha de Fundación
+                    Fecha Fin
                   </th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                @foreach ($equipos as $e)
+                @foreach ($ligas as $l)
                     <tr>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
-                          <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="{{ $e->logo }}" alt="">
-                          </div>
                           <div class="ml-4">
                             <div class="text-sm font-medium text-gray-900">
-                              {{ $e->nombre }}
-                            </div>
-                            <div class="text-sm text-gray-500">
-                              {{ $e->direccion }}
+                              {{ $l->nombre }}
                             </div>
                           </div>
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{ $e->pais }}</div>
+                        <div class="text-sm text-gray-900">{{ $l->cantidad_fechas }}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{ $e->ciudad }}</div>
+                        <div class="text-sm text-gray-900">{{ $l->equipos->count() }}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{ $e->estadio }}</div>
+                        <div class="text-sm text-gray-900">{{ $l->fecha_inicio }}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{ $e->fecha_fundacion }}</div>
+                        <div class="text-sm text-gray-900">{{ $l->fecha_fin }}</div>
                       </td>
                     </tr>
                 @endforeach
               </tbody>
             </table>
             <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
-                {{ $equipos->links() }}
+                {{ $ligas->links() }}
             </div>
           </div>
         </div>
