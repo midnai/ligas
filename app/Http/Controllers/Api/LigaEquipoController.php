@@ -18,8 +18,8 @@ class LigaEquipoController extends Controller
 
     public function equipos()
     {
-        // (new EquiposImport)->import(request()->file('your_file'));
-        (new EquiposImport)->import('test.xlsx');
+        (new EquiposImport)->import(request()->file('excel'));
+        // (new EquiposImport)->import('test.xlsx');
 
         return response()->json('Archivo importado exitosamente!', 200);
     }

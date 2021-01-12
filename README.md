@@ -1,62 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Ligas de Futbol
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Como punto inicial se usa [Laravel Jetstream]
 
-## About Laravel
+# Instalación
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Despues de clonar el repositorio, ejecutar `composer install` y configurar su base de datos, se debe ejecutar las migraciones con los seeds:
+```sh
+$ php artisan migrate:fresh --seed
+```
+# Endpoints
+## Ligas
+| Verbo | URI | Action | Descripción |
+| ------ | ------ | ------ | ------ |
+| GET | `/ligas` | index | Lista de ligas |
+| GET | `/ligas/{liga}` | show | Detalle de liga |
+| GET | `/ligas/{liga}/equipos` | index | Lista de equipos de una liga |
+| POST | `/ligas` | store | Crear liga |
+| POST | `/ligas/equipos` | equipos | Cargar Excel |
+| PUT | `/ligas/{liga}` | update | Actualizar liga |
+| DELETE | `/ligas/{liga}` | delete |Eliminar liga |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Equipos
+| Verbo | URI | Action | Descripción |
+| ------ | ------ | ------ | ------ |
+| GET | `/equipos` | index | Lista de equipos |
+| GET | `/equipos/{equipo}` | show | Detalle de equipo |
+| GET | `/equipos/{equipo}/ligas` | index | Lista de ligas de un equipo |
+| GET | `/equipos/{equipo}/jugadores` | index | Lista de jugadores de un equipo |
+| POST | `/equipos` | store | Crear equipo |
+| PUT | `/equipos/{equipo}` | update | Actualizar equipo |
+| DELETE | `/equipos/{equipo}` | delete |Eliminar equipo |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Jugadores
+| Verbo | URI | Action | Descripción |
+| ------ | ------ | ------ | ------ |
+| GET | `/jugadores` | index | Lista de jugadores |
+| GET | `/jugadores/{jugador}` | show | Detalle de jugador |
+| POST | `/jugadores` | store | Crear jugador |
+| PUT | `/jugadores/{jugador}` | update | Actualizar jugador |
+| DELETE | `/jugadores/{jugador}` | delete |Eliminar jugador |
 
-## Learning Laravel
+# Test
+Todos los endpoints tienen tests, puede visualizarlo ejecutando el `TestSuit=Liga`, con el siguiente comando:
+```sh
+$ php artisan test --testsuite=Liga
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![tests](https://raw.githubusercontent.com/octobel/ligas/main/public/img/test.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Acceso al Sistema
+EL sistema permite crear usuarios y cada usuario puede crear tokens
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Login & Register
+En la carga inicial encontraras los links para crear un usuario y para el login
 
-### Premium Partners
+![Paso1](https://github.com/octobel/ligas/blob/main/public/img/Paso%201.png?raw=true)
+![Paso2](https://github.com/octobel/ligas/blob/main/public/img/Paso%202.png?raw=true)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+## Dashboard & Lista de Equipo
+AL ingresar al sistema podras visualizar las opciones tanto para ir a la vista de listado de equipos como opciones de la cuenta, entre ellas crear API tokens.
 
-## Contributing
+![Paso3](https://github.com/octobel/ligas/blob/main/public/img/Paso%203.png?raw=true)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Crear tokens
+En esta vista el usuario podra crear 2 tipos de tokens:
+ - Acceso limitado (3 request por minuto)
+ - Acceso ilimitado (marcar la opcion `full_access`)
+ - El nombre del token puede ser de su elección
 
-## Code of Conduct
+![Paso4](https://github.com/octobel/ligas/blob/main/public/img/Paso%204.png?raw=true)
+![Paso5](https://github.com/octobel/ligas/blob/main/public/img/Paso%205.png?raw=true)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Logica de los tokens con acceso limitado
 
-## Security Vulnerabilities
+Se modifico el archivo `RouteServiceProvider.php` agregando un nuevo `Rate Limit`, esta caracteristica viene por defecto en Laravel, asi que solo basta con configurarlo.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![Rate Limit](https://github.com/octobel/ligas/blob/main/public/img/rate_limit.png?raw=true)
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Carga masiva de equipos
+
+> Esta caracteristca no esta terminada, hace falta mas validaciones 
+
+Decidi usar el paquete `Laravel Excel` que nos permite dividir los registros del archivo excel en porciones o Chunks, ejecutar o insertar los registros en Batchs e incluso encolar los estos Batchs y Chunks.
+
+La logica es muy sencilla una ves teniendo el paquete, se puede encontrar en `app/Http/Controllers/Api/LigaEquipoController.php`
+
+Archivo de ejemplo: `public/excel/test.xlsx`
+
+[Laravel Jetstream]: <https://jetstream.laravel.com/>
