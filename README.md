@@ -41,6 +41,7 @@ $ php artisan migrate:fresh --seed
 | DELETE | `/jugadores/{jugador}` | delete |Eliminar jugador |
 
 # Test
+> El proyecto esta configurado para usar SQLite para el testing
 Todos los endpoints tienen tests, puede visualizarlo ejecutando el `TestSuit=Liga`, con el siguiente comando:
 ```sh
 $ php artisan test --testsuite=Liga
