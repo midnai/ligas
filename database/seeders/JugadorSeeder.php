@@ -223,7 +223,10 @@ class JugadorSeeder extends Seeder
         ];
 
         foreach ($jugadores as $value) {
-            Jugador::factory()->create(['nombre' => $value]);
+            Jugador::factory()->create([
+                'nombre' => $value,
+                'foto' => 'https://ui-avatars.com/api/?name='.urlencode($value).'&color=7F9CF5&background=EBF4FF',
+            ]);
         }
     }
 }

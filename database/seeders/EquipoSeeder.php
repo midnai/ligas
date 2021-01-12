@@ -35,7 +35,10 @@ class EquipoSeeder extends Seeder
         ];
 
         foreach ($equipos as $value) {
-            Equipo::factory()->create(['nombre' => $value]);
+            Equipo::factory()->create([
+                'nombre' => $value,
+                'logo' => 'https://ui-avatars.com/api/?name='.urlencode($value).'&color=7F9CF5&background=EBF4FF',
+            ]);
         }
 
         $jugadores = Jugador::all();
