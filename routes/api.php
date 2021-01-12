@@ -22,12 +22,11 @@ Route::middleware(['auth:sanctum', 'throttle:tokens'])->group(function() {
 
     Route::get('ligas', 'Api\LigaController@index');
     Route::get('ligas/{liga}', 'Api\LigaController@show');
+    Route::get('ligas/{liga}/equipos', 'Api\LigaEquipoController@index');
     Route::post('ligas', 'Api\LigaController@store');
+    Route::post('ligas/equipos', 'Api\LigaEquipoController@equipos');
     Route::put('ligas/{liga}', 'Api\LigaController@update');
     Route::delete('ligas/{liga}', 'Api\LigaController@delete');
-    Route::get('ligas/{liga}/equipos', 'Api\LigaEquipoController@index');
-    // Route::post('ligas/{liga}/equipos', 'Api\LigaEquipoController@equipos');
-    Route::post('ligas/equipos', 'Api\LigaEquipoController@equipos');
 
     Route::get('equipos', 'Api\EquipoController@index');
     Route::get('equipos/{equipo}', 'Api\EquipoController@show');
